@@ -16,21 +16,21 @@ const Contact = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-  
+
     axios
-       .post("http://localhost:5000/api/contactUs", contact)
-       .then((data) => {
-          if(data.status) {
-              alert();
-              toast.success(data.data.message);
-              console.log(data,"success");
-              setContact(initialValue);
-          }
-       })
-       .catch((err)  => {
-          //console.log("catch", err.response.data);
-          toast.error(err.response.data.Error);
-       })
+      .post("http://localhost:5000/api/contactUs", contact)
+      .then((data) => {
+        if (data.status) {
+          alert();
+          toast.success(data.data.message);
+          console.log(data, "success");
+          setContact(initialValue);
+        }
+      })
+      .catch((err) => {
+        //console.log("catch", err.response.data);
+        toast.error(err.response.data.Error);
+      });
   };
   return (
     <>
@@ -45,14 +45,13 @@ const Contact = () => {
           </div>
         </div>
       </section>
-      {/* <!-- end inner page section -->
-      <!-- why section --> */}
+
       <section className="why_section layout_padding">
         <div className="container">
           <div className="row">
             <div className="col-lg-8 offset-lg-2">
               <div className="full">
-                <form >
+                <form>
                   <fieldset>
                     <input
                       type="text"
@@ -85,9 +84,9 @@ const Contact = () => {
                       value={contact.message}
                       onChange={handleInputChange}
                     />
-                  <button type="submit" onClick={(e) => submitHandler(e)}>
-                     Submit
-                  </button>
+                    <button type="submit" onClick={(e) => submitHandler(e)}>
+                      Submit
+                    </button>
                   </fieldset>
                 </form>
               </div>
