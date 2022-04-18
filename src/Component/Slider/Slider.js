@@ -18,14 +18,14 @@ const Slider = () => {
         console.log(err.response.data.message);
       });
   }, []);
-  console.log("slider", slider);
+  console.log("slider line no 21", slider);
   console.log("slider", typeof slider);
 
   return (
     <>
       <div id="customCarousel1" className="carousel slide" data-ride="carousel">
         <div className="carousel-inner">
-            {slider?.map((slider, index) => {
+          {slider?.map((slider, index) => {
             console.log(index, "index");
             return (
               <div
@@ -36,47 +36,46 @@ const Slider = () => {
               >
                 <section className="slider_section">
                   <div className="slider_bg_box">
-                    <img src={[slider.data]} alt="" />
+                    <img src={`http://${slider.url}`} alt="" />
                   </div>
                   <div className="container ">
                     <div className="row">
                       <div className="col-md-7 col-lg-6 ">
                         <div className="detail-box">
                           <h1>
-                            <span>{slider.path}</span>
+                            {/* <span>{slider._id}</span> */}
                             <br />
-                            {slider.brand}
+                            {/* {slider.brand} */}
                           </h1>
-                          <p>{slider.text}</p>
+                          {/* <p>{slider.text}</p> */}
                         </div>
                       </div>
                     </div>
                   </div>
-              </section>
+                </section>
               </div>
-            );})}
-         </div>
-            
+            );
+          })}
         </div>
-        <div>
-          <div className="container">
-            <ol className="carousel-indicators">
-              <li
-                data-target="#customCarousel1"
-                data-slide-to="0"
-                className="active"
-              ></li>
-              <li data-target="#customCarousel1" data-slide-to="1"></li>
-              <li data-target="#customCarousel1" data-slide-to="2"></li>
-              <li data-target="#customCarousel1" data-slide-to="3"></li>
-              <li data-target="#customCarousel1" data-slide-to="4"></li>
-              <li data-target="#customCarousel1" data-slide-to="5"></li>
-            </ol>
-          </div>
+      </div>
+      <div>
+        <div className="container">
+          <ol className="carousel-indicators">
+            <li
+              data-target="#customCarousel1"
+              data-slide-to="0"
+              className="active"
+            ></li>
+            <li data-target="#customCarousel1" data-slide-to="1"></li>
+            <li data-target="#customCarousel1" data-slide-to="2"></li>
+            <li data-target="#customCarousel1" data-slide-to="3"></li>
+            <li data-target="#customCarousel1" data-slide-to="4"></li>
+            <li data-target="#customCarousel1" data-slide-to="5"></li>
+          </ol>
         </div>
-   </>  )
-    
-
+      </div>
+    </>
+  );
 };
 
 export default Slider;
