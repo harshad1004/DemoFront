@@ -25,7 +25,7 @@ const Slider = () => {
     <>
       <div id="customCarousel1" className="carousel slide" data-ride="carousel">
         <div className="carousel-inner">
-          {slider?.map((slider, index) => {
+            {slider?.map((slider, index) => {
             console.log(index, "index");
             return (
               <div
@@ -38,7 +38,7 @@ const Slider = () => {
                   <div className="slider_bg_box">
                     <img src={[slider.data]} alt="" />
                   </div>
-                  {/* <div className="container ">
+                  <div className="container ">
                     <div className="row">
                       <div className="col-md-7 col-lg-6 ">
                         <div className="detail-box">
@@ -51,11 +51,12 @@ const Slider = () => {
                         </div>
                       </div>
                     </div>
-                  </div> */}
-                </section>
+                  </div>
+              </section>
               </div>
-            );
-          })}
+            );})}
+         </div>
+            
         </div>
         <div>
           <div className="container">
@@ -73,9 +74,9 @@ const Slider = () => {
             </ol>
           </div>
         </div>
-      </div>
-    </>
-  );
+   </>  )
+    
+
 };
 
 export default Slider;
