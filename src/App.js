@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import AllGallery from "./Component/Gallery/AllGallery";
 import Main from "./Component/Main";
 import Contact from "./Component/Contact/Contact";
+import { Routes, Route } from "react-router-dom";
 function App() {
   return (
     <>
