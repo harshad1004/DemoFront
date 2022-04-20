@@ -9,11 +9,6 @@ const header = [
     path: "/",
   },
   {
-    id: "2",
-    name: "About",
-    path: "/about",
-  },
-  {
     id: "3",
     name: "Gallery",
     path: "/gallery",
@@ -33,17 +28,6 @@ const Header = () => {
             <Link className="navbar-brand" to="/">
               <img width="250" src="images/logo.png" alt="#" />
             </Link>
-            {/* <button
-              className="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className=""> </span>
-            </button> */}
             <div
               className="collapse navbar-collapse"
               id="navbarSupportedContent"
@@ -52,9 +36,9 @@ const Header = () => {
                 {header.map((header, index) => {
                
                   return (
-                    <li  key={index} className={index === 0 ? "nav-item active" : "nav-item"}>
+                    <li  key={index}>
                     
-                      <Link className={index === 0 ? "nav-link " : "nav-link"} to={header.path}>
+                      <Link className={index === 0 ? "nav-link active " : "nav-link"} to={header.path}>
                         {header.name}
                       </Link>
                     </li>

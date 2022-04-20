@@ -3,21 +3,17 @@ import WhyShop from "./WhyShop";
 import Arrival from "./Arrival";
 import Gallery from "./Gallery/Gallery";
 import Contact from "./Contact/Contact";
-import Customer from "./Customer/About";
+import About from "./Customer/About";
 import Slider from "./Slider/Slider";
 const Main = () => {
   return (
     <>
-       <Slider />
-      {/* <WhyShop /> */}
-
-      {/* <Arrival /> */}
-
+      <Slider />
       <Gallery />
 
       <Contact />
 
-      <Customer />
+      {/* <About /> */}
     </>
   );
 };

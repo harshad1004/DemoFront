@@ -1,50 +1,51 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
-const SliderData = [
-  {
-    id: "0",
-    sale: "Sale 20% off",
-    brand: "On Everything",
-    text: "Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.",
-    image: "images/slider-bg.jpg",
-  },
-  {
-    id: "1",
-    sale: "Sale 40% off",
-    brand: "Off Everything",
-    text: "Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.",
-    image: "images/arrival-bg.png",
-  },
-  {
-    id: "2",
-    sale: "Sale 60% off",
-    brand: "On Everything",
-    text: "Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.",
-    image: "images/slider-bg.jpg",
-  },
-  {
-    id: "3",
-    sale: "Sale 80% off",
-    brand: "Off Everything",
-    text: "Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.",
-    image: "images/arrival-bg.png",
-  },
-  {
-    id: "4",
-    sale: "Sale 100% off",
-    brand: "Off Everything",
-    text: "Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.",
-    image: "images/slider-bg.jpg",
-  },
-  {
-    id: "5",
-    sale: "Sale 120% off",
-    brand: "On Everything",
-    text: "Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.",
-    image: "images/arrival-bg.png",
-  },
-];
+
+// const SliderData = [
+//   {
+//     id: "0",
+//     sale: "Sale 20% off",
+//     brand: "On Everything",
+//     text: "Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.",
+//     image: "images/slider-bg.jpg",
+//   },
+//   {
+//     id: "1",
+//     sale: "Sale 40% off",
+//     brand: "Off Everything",
+//     text: "Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.",
+//     image: "images/arrival-bg.png",
+//   },
+//   {
+//     id: "2",
+//     sale: "Sale 60% off",
+//     brand: "On Everything",
+//     text: "Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.",
+//     image: "images/slider-bg.jpg",
+//   },
+//   {
+//     id: "3",
+//     sale: "Sale 80% off",
+//     brand: "Off Everything",
+//     text: "Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.",
+//     image: "images/arrival-bg.png",
+//   },
+//   {
+//     id: "4",
+//     sale: "Sale 100% off",
+//     brand: "Off Everything",
+//     text: "Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.",
+//     image: "images/slider-bg.jpg",
+//   },
+//   {
+//     id: "5",
+//     sale: "Sale 120% off",
+//     brand: "On Everything",
+//     text: "Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.",
+//     image: "images/arrival-bg.png",
+//   },
+// ];
 const Slider = () => {
   const [sliderData, setSliderData] = useState([]);
   useEffect(() => {
@@ -52,25 +53,24 @@ const Slider = () => {
   }, []);
   const fetchSlide = () => {
     axios
-      .get("http://localhost:5000/api/slider")
+      .get("http://localhost:5000/api/slider/")
       .then((data) => {
-        console.log("57", data);
+        console.log(data.data.data,"58")
         setSliderData(data.data.data);
       })
       .catch((err) => {
         console.log(err.response.data.message);
       });
   };
-  //  console.log(sliderData, "slider");
   console.log(sliderData, "65");
   return (
     <>
       <div id="customCarousel1" className="carousel slide" data-ride="carousel">
         <div className="carousel-inner">
           {sliderData.map((slider, index) => {
-            {
-              console.log(slider, "72");
-            }
+            // {
+            //   console.log(slider.url, "72");
+            // }
             return (
               <div
                 key={index}
@@ -80,7 +80,7 @@ const Slider = () => {
               >
                 <section className="slider_section">
                   <div className="slider_bg_box">
-                    <img src={slider} alt="" />
+                    <img src={`http://${slider.url}`} alt="sliderimage" />
                   </div>
                   <div className="container ">
                     <div className="row">
