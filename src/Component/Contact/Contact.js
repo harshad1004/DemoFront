@@ -63,7 +63,8 @@ const Contact = () => {
           </div>
         </div>
       </section>
-
+      {/* <!-- end inner page section -->
+      <!-- why section --> */}
       <section className="why_section layout_padding">
         <div className="container">
           <div className="row">
