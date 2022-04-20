@@ -1,11 +1,10 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
 
 const Slider = () => {
   const [slider, setSlider] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/slider")
+      .get("http://localhost:5000/api/slider/")
       .then((data) => {
         if (data.status) {
           setSlider(data.data.data);
@@ -25,7 +24,7 @@ const Slider = () => {
     <>
       <div id="customCarousel1" className="carousel slide" data-ride="carousel">
         <div className="carousel-inner">
-            {slider?.map((slider, index) => {
+          {slider?.map((slider, index) => {
             console.log(index, "index");
             return (
               <div
@@ -52,31 +51,30 @@ const Slider = () => {
                       </div>
                     </div>
                   </div>
-              </section>
+                </section>
               </div>
-            );})}
-         </div>
-            
+            );
+          })}
         </div>
-        <div>
-          <div className="container">
-            <ol className="carousel-indicators">
-              <li
-                data-target="#customCarousel1"
-                data-slide-to="0"
-                className="active"
-              ></li>
-              <li data-target="#customCarousel1" data-slide-to="1"></li>
-              <li data-target="#customCarousel1" data-slide-to="2"></li>
-              <li data-target="#customCarousel1" data-slide-to="3"></li>
-              <li data-target="#customCarousel1" data-slide-to="4"></li>
-              <li data-target="#customCarousel1" data-slide-to="5"></li>
-            </ol>
-          </div>
+      </div>
+      <div>
+        <div className="container">
+          <ol className="carousel-indicators">
+            <li
+              data-target="#customCarousel1"
+              data-slide-to="0"
+              className="active"
+            ></li>
+            <li data-target="#customCarousel1" data-slide-to="1"></li>
+            <li data-target="#customCarousel1" data-slide-to="2"></li>
+            <li data-target="#customCarousel1" data-slide-to="3"></li>
+            <li data-target="#customCarousel1" data-slide-to="4"></li>
+            <li data-target="#customCarousel1" data-slide-to="5"></li>
+          </ol>
         </div>
-   </>  )
-    
-
+      </div>
+    </>
+  );
 };
 
 export default Slider;
