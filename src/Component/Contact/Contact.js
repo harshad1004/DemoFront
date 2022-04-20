@@ -21,7 +21,6 @@ const Contact = () => {
       .post("http://localhost:5000/api/contactUs", contact)
       .then((data) => {
         if (data.status) {
-          alert();
           toast.success(data.data.message);
           console.log(data, "success");
           setContact(initialValue);
