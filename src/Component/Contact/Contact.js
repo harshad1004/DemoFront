@@ -98,6 +98,7 @@ const Contact = () => {
                     id="subject"
                     name="subject"
                     type="text"
+                    
                     placeholder="Enter Your Subject"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -110,6 +111,7 @@ const Contact = () => {
                     id="message"
                     name="message"
                     type="text"
+                    required
                     placeholder="Enter Your message"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -118,7 +120,16 @@ const Contact = () => {
                   {formik.errors.message ? (
                     <div style={{ color: "red" }}>{formik.errors.message}</div>
                   ) : null}
-                  <button type="submit">Submit</button>
+                  <button type="submit"
+                   style={{
+                    marginLeft: "45%",
+                    display: "inline-block",
+                    padding: "10px 40px",
+                    backgroundColor: "#f7444e",
+                    border: "1px solid #f7444e",
+                    color: "#ffffff",
+                    borderRadius: " 0",
+                  }}>Submit</button>
                 </form>
               </div>
             </div>

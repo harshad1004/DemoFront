@@ -1,54 +1,22 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
-const GalleryData = [
-  {
-    category: "Men's Shirt",
-    price: " $75",
-    image: "images/p1.png",
-  },
-  {
-    category: "Men's Shirt",
-    price: "$80",
-    image: "images/p2.png",
-  },
-  {
-    category: "Women's Dress",
-    price: "$68",
-    image: "images/p3.png",
-  },
-  {
-    category: "Women's Dress",
-    price: " $70",
-    image: "images/p4.png",
-  },
-  {
-    category: "Women's Dress",
-    price: " $75",
-    image: "images/p5.png",
-  },
-  {
-    category: "Women's Dress",
-    price: " $58",
-    image: "images/p6.png",
-  },
-  {
-    category: "Women's Dress",
-    price: " $80",
-    image: "images/p7.png",
-  },
-  {
-    category: "Men's Shirt",
-    price: " $65",
-    image: "images/p8.png",
-  },
-  {
-    category: "Men's Shirt",
-    price: " $65",
-    image: "images/p9.png",
-  },
-];
+import axios from "axios";
 
 const Gallery = () => {
+  const [image, setImage] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/api/gallery/")
+      .then((data) => {
+        if (data.status) {
+          setImage(data.data.data);
+        }
+      })
+      .catch((err) => {
+        console.log(err.response.data.message);
+      });
+  }, []);
+  const  trueImages = image.filter( image => image.status === true) 
   return (
     <>
       <section className="product_section layout_padding">
@@ -60,12 +28,12 @@ const Gallery = () => {
           </div>
 
           <div className="row">
-            {GalleryData.map((Gallery, index) => {
+            {trueImages.slice(0, 9).map((img, index) => {
               return (
                 <div key={index} className="col-sm-6 col-md-4 col-lg-4">
                   <div className="box">
                     <div className="img-box">
-                      <img src={Gallery.image} alt="" />
+                      <img src={`http://${img.url}`} alt="" />
                     </div>
                   </div>
                 </div>

@@ -1,11 +1,11 @@
 import React from "react";
 import Gallery from "./Gallery/Gallery";
 import Contact from "./Contact/Contact";
-import Slider from "./Slider/Slider";
+import SliderComponent from "./Slider/SliderComponent";
 const Main = () => {
   return (
     <>
-      <Slider />
+      <SliderComponent />
       <Gallery />
       <Contact />
     </>

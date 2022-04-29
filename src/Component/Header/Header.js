@@ -28,6 +28,7 @@ const Header = () => {
             <Link className="navbar-brand" to="/">
               <img width="250" src="images/logo.png" alt="#" />
             </Link>
+          
             <div
               className="collapse navbar-collapse"
               id="navbarSupportedContent"
