@@ -10,7 +10,6 @@ function App() {
   return (
     <>
       <Header />
-    
       <Routes>
         <Route exact path="/" element={<Main />} />
         <Route path="/contact" element={<Contact />} />
