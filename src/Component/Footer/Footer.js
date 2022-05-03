@@ -1,104 +1,89 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
-//import { FcGoogle } from "react-icons/bs";
-import  {FaGoogle}  from "react-icons/fa";
-import  {FaFacebook}  from "react-icons/fa";
-import  {FaLinkedin}  from "react-icons/fa";
-import  {FaYoutube}  from "react-icons/fa";
-
 const Footer = () => {
+  const [error, setError] = useState("");
+  const [about, setAbout] = useState([]);
+  useEffect(() => {
+    fetchAbout();
+  }, []);
+  const fetchAbout = () => {
+    axios
+      .get("http://localhost:5000/api/aboutUs/")
+      .then((data) => {
+        setAbout(data.data.aboutusdata);
+      })
+      .catch((err) => {
+        setError(err.response);
+        toast.error(error);
+      });
+  };
+
   return (
     <>
-      <footer>
-        <div className="container">
-          <div className="row">
-            <div className="col-md-5">
-              <div className="full">
-                <div className="logo_footer">
-                  <Link to="#">
-                    <img width="210" src="images/logo.png" alt="#" />
-                  </Link>
-                </div>
-                <div className="information_f">
-                  <p>
-                    <strong>ADDRESS:</strong> 28 White tower, Street Name New
-                    York City, USA
-                  </p>
-                  <p>
-                    <strong>TELEPHONE:</strong> +91 987 654 3210
-                  </p>
-                  <p>
-                    <strong>EMAIL:</strong> yourmain@gmail.com
-                  </p>
-                </div>
+      {about.map((about) => {
+        return (
+          <footer className="footer-distributed" key={about._id}>
+            <div className="footer-left">
+              <h3>
+                Company<span>logo</span>
+              </h3>
+
+              <p className="footer-links">
+                <Link to="/">Home</Link>
+                <br></br>
+                <Link to="/gallery">Gallery</Link>
+                <br></br>
+                <Link to="/contact">Contact</Link>
+              </p>
+            </div>
+
+            <div className="footer-center">
+              <div>
+                <i className="fa fa-map-marker"></i>
+                <p>
+                  <span>{about.addresses}</span>
+                </p>
+              </div>
+
+              <div>
+                <i className="fa fa-phone"></i>
+                <p>{about.contactNumber}</p>
+              </div>
+
+              <div>
+                <i className="fa fa-envelope"></i>
+                <p>
+                  <a href="mailto:support@company.com">{about.email}</a>
+                </p>
               </div>
             </div>
-            <div className="col-md-4">
-              <div className="widget_menu">
-                <h3>Menu</h3>
-                <ul style={{fontWeight:"bold"}}>
-                  <li style={{margin:"5px", paddingTop:"5px"}}>
-                    <Link to="/"> <span> Home</span></Link>
-                  </li>
-                  <li style={{margin:"5px", paddingTop:"5px"}}>
-                    <Link to="/about">About</Link>
-                  </li>
-                  {/* <li>
-                    <Link to="#">Services</Link>
-                  </li> */}
-                  {/* <li>
-                    <Link to="">Testimonial</Link>
-                  </li> */}
-                  <li style={{margin:"5px", paddingTop:"5px"}}>
-                    <Link to="/gallery">Gallery</Link>
-                  </li>
-                  <li style={{margin:"5px", paddingTop:"5px"}}>
-                    <Link to="/contact">Contact</Link>
-                  </li>
-                </ul>
+
+            <div className="footer-right">
+              <p className="footer-company-about">
+                <span>{about.title}</span>
+                {about.text}
+              </p>
+
+              <div className="footer-icons">
+                <a href="https://www.facebook.com/" target="_blank">
+                  <i className="fa fa-facebook"></i>
+                </a>
+                <a href="https://twitter.com/?lang=en" target="_blank">
+                  <i className="fa fa-twitter"></i>
+                </a>
+                <a href="https://www.linkedin.com/signup" target="_blank">
+                  <i className="fa fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/" target="_blank">
+                  <i className="fa fa-github"></i>
+                </a>
               </div>
             </div>
-            <div className="col-md-3">
-              <div className="widget_menu">
-                <h3>Media</h3>
-                <ul >
-                  <li style={{margin:"5px", paddingTop:"5px"}}>
-                     <a href="/www.google.com">
-                  <FaGoogle 
-                     color="#4285F4"
-                     size="23px"
-                     />
-                     </a>
-                  </li>
-                  <li style={{margin:"5px", paddingTop:"5px"}}>
-                  <a href="/www.facebook.com">
-                    <FaFacebook 
-                     color="#4267B2"
-                     size="23px" />
-                       </a>
-                  </li>
-                  <li style={{margin:"5px", paddingTop:"5px"}}>
-                  <a href="/https://in.linkedin.com/">
-                    <FaLinkedin 
-                     color="#0077b5"
-                     size="23px" />
-                          </a>
-                  </li>
-                  <li style={{margin:"5px", paddingTop:"5px"}}>
-                    <a href="/www.youtube.com">
-                       <FaYoutube 
-                     color="#FF0000"
-                     size="23px"
-                     />
-                     </a>
-                  </li>
-                 
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+          </footer>
+        );
+      })}
     </>
   );
 };

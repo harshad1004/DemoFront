@@ -1,24 +1,14 @@
 import React from "react";
-import WhyShop from "./WhyShop";
-import Arrival from "./Arrival";
 import Gallery from "./Gallery/Gallery";
 import Contact from "./Contact/Contact";
-import Customer from "./Customer/About";
-import Slider from "./Slider/Slider";
+import SliderComponent from "./Slider/SliderComponent";
 const Main = () => {
   return (
-    <>
-       <Slider />
-      {/* <WhyShop /> */}
-
-      {/* <Arrival /> */}
-
+    <div>
+      <SliderComponent />
       <Gallery />
-
       <Contact />
-
-      <Customer />
-    </>
+    </div>
   );
 };
 
