@@ -25,9 +25,10 @@ const SliderComponent = () => {
     arrows: true,
     autoplay: true,
   };
-
-  const trueSlider = slider.filter((slider) => slider.status === true);
+  
+  const  trueSlider = slider.filter( slider => slider.status === true) 
   return (
+    
     <div className="content">
       <Slider {...settings}>
         {trueSlider.map((slider) => (
@@ -35,7 +36,9 @@ const SliderComponent = () => {
         ))}
       </Slider>
     </div>
+   
   );
 };
 
 export default SliderComponent;
+

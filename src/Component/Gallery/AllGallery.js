@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const AllGallery = () => {
+  const [error, setError] = useState("");
   const [img, setImg] = useState(4);
   const [moreimages, setMoreImages] = useState([]);
   useEffect(() => {
@@ -13,14 +15,14 @@ const AllGallery = () => {
         }
       })
       .catch((err) => {
-        console.log(err.response.data.message);
+        setError(err.response.data.message);
+        toast.error(error);
       });
   }, []);
   const LoadMoreImages = () => {
     setImg((preValue) => preValue + 4);
   };
-   const  trueImages = moreimages.filter( image => image.status === true) 
- 
+  const trueImages = moreimages.filter((image) => image.status === true);
 
   return (
     <>

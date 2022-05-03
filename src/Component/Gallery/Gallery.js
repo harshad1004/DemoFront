@@ -1,8 +1,10 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const Gallery = () => {
+  const [error, setError] = useState("");
   const [image, setImage] = useState([]);
   useEffect(() => {
     axios
@@ -13,10 +15,11 @@ const Gallery = () => {
         }
       })
       .catch((err) => {
-        console.log(err.response.data.message);
+        setError(err.response.data.messages);
+        toast.error(error);
       });
   }, []);
-  const  trueImages = image.filter( image => image.status === true) 
+  const trueImages = image.filter((image) => image.status === true);
   return (
     <>
       <section className="product_section layout_padding">
